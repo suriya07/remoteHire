@@ -47,7 +47,7 @@
                             </label>
                         </div> -->
                         <div class="form-group">
-                            <span class="text-muted">or</span> <a href="/account/signin"><u>Already have and account.?</u></a>
+                            <span class="text-muted">or</span> <a href="/candidate/signin"><u>Already have and account.?</u></a>
                         </div>
                         <button type="submit" class="btn btn-primary" onClick="validateUserLogin();" >Submit <i class="fa fa-arrow-right"></i></button>
                     </form>

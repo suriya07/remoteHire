@@ -23,7 +23,7 @@
                     <a class="btn btn-outline-success my-2 my-sm-0" href="/companies/signin" style="font-size:13px">POST A JOB</a>
                 </li>
                 <li class="nav-item active" style="margin-left:1rem">
-                    <a class="btn btn-success my-2 my-sm-0" href="/account/signin" style="font-size:13px">FIND A JOB</a>
+                    <a class="btn btn-success my-2 my-sm-0" href="/candidate/signin" style="font-size:13px">FIND A JOB</a>
                 </li>
             </ul>
         </div>

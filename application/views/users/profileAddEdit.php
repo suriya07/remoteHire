@@ -47,6 +47,7 @@
             </div>
             <div class="row" style="margin-top:10px;">
                 <div class="col-4">
+                    <?php if($isPublicView == 0){  ?>
                     <div class="card" style="width: 16rem;position:absolute;top:0%">
                         <div class="card-header" style="background-color:#FFF">
                             Matching Jobs
@@ -70,6 +71,7 @@
                             -->                   
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
                 <div class="col-8">
                     <div class="row" id="experienceDiv">    
@@ -188,7 +190,9 @@
                                                             </div>
                                                             <div class="col-4">
                                                                 <p style="margin:0px;"><span class="text-muted" style="font-size:12px;"><?php echo substr($education['STUDIED_FROM'],0,7)."  to ".substr($education['STUDIED_TILL'],0,7); ?></span></p>
+                                                                <?php if($isPublicView == 0){  ?>
                                                                 <p><button class="btn btn-link" onclick="editUserEducation(<?php echo $education['USER_EDUCATION_ID'];?>)" style="font-size:12px;"><i class="fa fa-edit fa-fw"></i>Edit</button></p>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -237,26 +241,28 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="row">
-                <div class="col">
-                    <div class="card" >
-                        <div class="card-body text-center">
-                            <div class="progress blue">
-                                <span class="progress-left">
-                                    <span class="progress-bar"></span>
-                                </span>
-                                <span class="progress-right">
-                                    <span class="progress-bar"></span>
-                                </span>
-                                <div class="progress-value">50%</div>
+            <?php if($isPublicView == 0){  ?>
+                <div class="row">
+                    <div class="col">
+                        <div class="card" >
+                            <div class="card-body text-center">
+                                <div class="progress blue">
+                                    <span class="progress-left">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <div class="progress-value">50%</div>
+                                </div>
+                                <p class="card-text text-muted">Is Suriya your colleague.?</p>
+                                <!-- <a href="#" class="card-link">Card link</a> -->
+                                <a href="#" class="card-link btn btn-primary" style="border-radius:0px;">Join now</a>
                             </div>
-                            <p class="card-text text-muted">Is Suriya your colleague.?</p>
-                            <!-- <a href="#" class="card-link">Card link</a> -->
-                            <a href="#" class="card-link btn btn-primary" style="border-radius:0px;">Join now</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
             <!-- <div class="row" style="margin-top:1rem">
                 <div class="col">
                     <div class="card">

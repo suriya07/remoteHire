@@ -7,7 +7,7 @@
                     <div class="col-md-5 text-center">
                         <h1 style="font-weight:200;font-size:40px;margin-bottom:18px;">Apply to top technology jobs in 60 seconds</h1>
                         <p class="text-muted" style="font-size:24px;margin-bottom:18px;">We connect job seekers with awesome companies in New York, San Francisco, and beyond.</p>
-                        <p style="margin-bottom:13px;"><a href="/account/signup" class="btn btn-success" style="padding:.5rem 3.75rem;color:#FFF">Find a job</a></p>
+                        <p style="margin-bottom:13px;"><a href="/candidate/signup" class="btn btn-success" style="padding:.5rem 3.75rem;color:#FFF">Find a job</a></p>
                         <a href="/companies/signup" class="btn btn-link">Is your team hiring?</a>
                     </div>
                 </div>

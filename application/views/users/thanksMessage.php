@@ -14,7 +14,7 @@
                 <hr class="my-4">
                 <p>We have sent a verification link to your email <a href="#" style="text-decoration:underline;"><?php echo $email;?></a>. Please acknowledge, to authenticate your profile and for receving notifications matching your profile.  Mean while you can sign-in and fill your personal and profile details.</p>
                 <p class="lead">
-                <a class="btn btn-success btn-lg" href="/account/signin" role="button">Signin <i class="fa fa-arrow-right"></i></a>
+                <a class="btn btn-success btn-lg" href="/candidate/signin" role="button">Signin <i class="fa fa-arrow-right"></i></a>
                 </p>
             </div>
         </div>

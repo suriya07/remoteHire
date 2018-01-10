@@ -3,12 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class App extends CI_Controller {
 	public function __construct(){
 		parent::__construct();	
-		//$this->checkUsersSession();
+		$this->checkUsersSession();
 		$this->load->model('User_model','', TRUE); 
 	}
 	
 	public function checkUsersSession(){
 		//Function to check user sesison data;
+		$this->load->library('session');
+		$sess_id = $this->session->userdata('usrID');
+		if(empty($sess_id)){
+			redirect('/');
+		}
 	}
 	public function home(){
 		echo "page develoment is in progress";
@@ -56,7 +61,7 @@ class App extends CI_Controller {
 
 	public function clearUserSession(){
 		$this->load->library('session');
-		$clientSessionArray = array('usrName'=>'', 'usrPasswd'=>'', 'status'=>'', 'usrID'=>'');
+		$clientSessionArray = array('usrFName', 'usrLName', 'status', 'usrID');
 		$this->session->unset_userdata($clientSessionArray);
 		redirect('/');
 	}

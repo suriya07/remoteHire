@@ -21,10 +21,10 @@
                     <a class="nav-link" href="#" style="padding-right:1rem;padding-left:1rem;">FAQ</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-outline-success my-2 my-sm-0" href="/account/signin" style="font-size:13px">LOG IN</a>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="/candidate/signin" style="font-size:13px">LOG IN</a>
                 </li>
                 <li class="nav-item active" style="margin-left:1rem">
-                    <a class="btn btn-success my-2 my-sm-0" href="/account/signup" style="font-size:13px">SIGN UP</a>
+                    <a class="btn btn-success my-2 my-sm-0" href="/candidate/signup" style="font-size:13px">SIGN UP</a>
                 </li>
             </ul>
         </div>

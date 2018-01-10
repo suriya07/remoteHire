@@ -6,9 +6,9 @@
                     <div class="col">
                         <p class="text-muted">USER SERVICES</P>
                         <ul class="list-unstyled footerUL" sytle="">
-                            <li><a href="/account/signin">Sign Up</a></li>
-                            <li><a href="/account/signup">Sign In</a></li>
-                            <li><a href="/account/signup">Contact Us</a></li>
+                            <li><a href="/candidate/signin">Sign Up</a></li>
+                            <li><a href="/candidate/signup">Sign In</a></li>
+                            <!-- <li><a href="/candidate/signup">Contact Us</a></li> -->
                             <!-- <li><a href="#">Terms & Conditions</a></li>
                             <li><a href="#">Privacy Policy</a></li> -->
                         </ul>

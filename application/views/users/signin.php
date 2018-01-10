@@ -26,7 +26,7 @@
                                 <span class="text-muted">or</span>
                             </div>
                             <div class="col-5" style="flex:0 0 46%;max-width:46%">
-                                <a href="/account/signup"><u>Candaidate Signup</u></a>
+                                <a href="/candidate/signup"><u>Candaidate Signup</u></a>
                             </div>
                         </div>
                         <div class="form-group"></div>
