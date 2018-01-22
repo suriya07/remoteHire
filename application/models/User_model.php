@@ -262,6 +262,17 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function GetSkillSet(){
+        $skillID = $this->input->post('inputSkillTitle');   
+        $this->db->select('skill_id');
+        $this->db->select('skill_name');
+        $this->db->from('predefine_list');
+        $this->db->where('skill_id', $skillID);  
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+
     public function UpdateSkillSet(){
         if($this->input->post('isCandidate')==1){
             $this->load->library('session');
@@ -337,6 +348,15 @@ class User_model extends CI_Model {
             //$skillName = $this->input->post('inputRecentCompany');
             return 2;
         }
+    }
+
+    public function GetAllMatchingJobs(){
+        $this->load->library('session');
+        $user_id = $this->session->userdata('usrID');
+        $sql = "SELECT C.JOB_ID, C.JOB_TITLE, C.JOB_DESCRIPTION, C.JOB_TYPE, C.JOB_ROLE, C.JOB_EXPERIENCE, C.JOB_SKILLS, C.JOB_LOCATION, C.MIN_SAL, C.MAX_SAL, C.DATE_POSTED, B.SKILL_ID FROM COMPANY_JOB_INFO AS C, USER_EXPERIENCE_INFO AS B, JOB_SKILL_ID AS A WHERE C.JOB_ID = A.JOB_ID AND B.SKILL_ID = A.SKILL_ID AND B.USER_ID=?";        
+        $query = $this->db->query($sql, array($user_id));
+        $returnData = $query->result_array();
+        return array('jobInfo'=>$returnData);
     }
 
     /*

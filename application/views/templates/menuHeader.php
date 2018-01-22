@@ -17,9 +17,9 @@
                 <!-- <li class="nav-item active">
                     <a class="nav-link" href="#" style="padding-right:1rem;padding-left:1rem;"><i class="fa fa-clock-o fa-fw"></i>History</a>
                 </li> -->
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link" href="/profile/<?php echo $userInfo[0]['USER_FNAME']."-".$userInfo[0]['USER_LNAME']."-".substr($userInfo[0]['USER_ID'], strpos($userInfo[0]['USER_ID'], "_") + 1);?>" style="padding-right:1rem;padding-left:1rem;"><i class="fa fa-globe fa-fw"></i>&nbsp;Public Profile</a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:0rem">
                         <img src="<?php echo base_url("images/avataaar_male.png");?>" width="30"/>

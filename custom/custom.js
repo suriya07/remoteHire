@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
 
     $('#submitSaveCompany').click(function() {
-        var httpURL = "<?php echo site_url('index.php/form_validation/ValidateandSaveProfessionalInfo')?>";
+        var httpURL = "/index.php/form_validation/ValidateandSaveProfessionalInfo";
         var dataString = $('#frmAddCompany').serialize();
         $.ajax({
             url: httpURL,
@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 
     $('#submitSaveExperience').click(function() {
-        var httpURL = "<?php echo site_url('index.php/form_validation/ValidateandSaveExperienceInfo')?>";
+        var httpURL = "/index.php/form_validation/ValidateandSaveExperienceInfo";
         var dataString = "inputSkillTitle="+$('#inputSkillTitle').val();
         $.ajax({
             url: httpURL,
@@ -42,7 +42,7 @@ $(document).ready(function() {
     });
 
     $('#submitSaveEducation').click(function(){
-        var httpURL = "<?php echo site_url('index.php/form_validation/ValidateandSaveEducationInfo')?>";
+        var httpURL = "/index.php/form_validation/ValidateandSaveEducationInfo";
         var dataString = $('#frmAddEdu').serialize();
         $.ajax({
             url: httpURL,
@@ -59,7 +59,7 @@ $(document).ready(function() {
     });
 
     $('#updateProfileInfo').click(function(){
-        var httpURL = "<?php echo site_url('index.php/form_validation/ValidateandUpdateProfileInfo')?>";
+        var httpURL = "/index.php/form_validation/ValidateandUpdateProfileInfo";
         var dataString = $('#UpdateProfile').serialize();
         $.ajax({
             url: httpURL,
@@ -76,7 +76,7 @@ $(document).ready(function() {
     });
 
     $('#inputSkillTitle').keyup(function(){
-        var httpURL = "<?php echo site_url('index.php/form_validation/GetSkillList')?>";
+        var httpURL =  "/index.php/form_validation/GetSkillList";
         var dataString = "inputSkillTitle="+$('#inputSkillTitle').val();
         $.ajax({
             url: httpURL,
@@ -101,7 +101,7 @@ $(document).ready(function() {
         e.preventDefault();
         var $this = $(this).parent();
         $this.addClass("select").siblings().removeClass("select");
-        var httpURL = "<?php echo site_url('index.php/form_validation/UpdateSkillSet')?>";
+        var httpURL = "/index.php/form_validation/UpdateSkillSet";
         var dataString = "inputSkillID="+$this.data("value")+"&isCandidate=1";
         $.ajax({
             url: httpURL,
@@ -118,6 +118,77 @@ $(document).ready(function() {
             } 
         });
     });
+
+    $('#inputJobSkills').keyup(function(){
+        var httpURL = "/index.php/form_validation/GetSkillList";
+        var dataString = "inputSkillTitle="+$('#inputJobSkills').val();
+        $.ajax({
+            url: httpURL,
+            type: "POST",
+            data: dataString,
+            dataType: "JSON",
+            context: document.body
+        }).done(function(data){
+            domElements='';
+            if(data.length > 0){                           
+                for(i=0;i<data.length;i++){
+                    domElements += '<li class="list-group-item" data-value="'+data[i].skill_id+'"><a href="#">'+data[i].skill_name+'</a></li>';                    
+                }
+                $('#addJobSkillList').html(domElements);
+                $('#addJobSkillListDiv').show();
+            }else{
+                $('#addJobSkillList').html(domElements);
+                $('#addJobSkillListDiv').hide();
+            }
+        });                  
+    });
+
+    $("#addJobSkillList").on("click", "a", function(e){
+        e.preventDefault();
+        var $this = $(this).parent();
+        $this.addClass("select").siblings().removeClass("select");
+        var httpURL = "/index.php/form_validation/GetSkillSetInfo";
+        var dataString = "inputSkillTitle="+$this.data("value");
+        $.ajax({
+            url: httpURL,
+            type: "POST",
+            data: dataString,
+            dataType: "JSON",
+            context: document.body
+        }).done(function(data){
+            skillSet='';
+            if(data.length > 0){
+                 var existingSkillIDs = new Array();
+                for(i=0;i<data.length;i++){
+                    
+                    if(typeof($('#inputJobSkillsList').val())=='undefined' || $('#inputJobSkillsList').val() == ''){
+                        alert('aaaa');
+                        existingSkillIDs.push(data[i].skill_id);
+                        skillSet = '<a href="#" class="badge badge-success" style="padding:0.5em 0.8em;margin:0.25rem">'+data[i].skill_name+' <i class="fa fa-check fa-fw"></i></a>';                       
+                        $('#updateSkillList').append(skillSet);
+                    }else{
+                        alert('bbbb');
+                        existingSkillIDs = $('#inputJobSkillsList').val().split(",");
+                        if(existingSkillIDs.length<5){
+                            if(!existingSkillIDs.includes(data[i].skill_id)){
+                                existingSkillIDs.push(data[i].skill_id);
+                                skillSet = '<a href="#" class="badge badge-success" style="padding:0.5em 0.8em;margin:0.25rem">'+data[i].skill_name+' <i class="fa fa-check fa-fw"></i></a>';
+                                $('#updateSkillList').append(skillSet);
+                            }                       
+                        }else{
+                            alert('Not more than 5 skills');
+                        }
+                    }
+                    $('#inputJobSkillsList').val(existingSkillIDs);
+                }
+                alert(skillSet);
+                
+            }    
+            $('#addJobSkillList').html();$('#inputJobSkills').val('');
+            $('#addJobSkillListDiv').hide();        
+        });
+       
+    });    
 
     $("#summaryShowLessAction").on("click", function(e){
         //e.preventDefault();
@@ -141,7 +212,7 @@ $(document).ready(function() {
 });
 
 function GetAllUserSkills(){
-    var httpURL = "<?php echo site_url('index.php/form_validation/GetAllUsersSkills')?>";
+    var httpURL = "/index.php/form_validation/GetAllUsersSkills";
     var dataString ='';
     $.ajax({
         url: httpURL,
@@ -164,7 +235,7 @@ function GetAllUserSkills(){
 }
 
 function GetUsers5Skills(){
-    var httpURL = "<?php echo site_url('index.php/form_validation/GetFirst5UsersSkills')?>";
+    var httpURL = "/index.php/form_validation/GetFirst5UsersSkills";
     var dataString ='';
     $.ajax({
         url: httpURL,
@@ -188,7 +259,7 @@ function GetUsers5Skills(){
 
 function editUserProfileInfo(usrProfileID){
     $.ajax({
-        url : "<?php echo site_url('index.php/form_validation/GetUserProfileInfo/')?>" + usrProfileID,
+        url : "/index.php/form_validation/GetUserProfileInfo/" + usrProfileID,
         type: "GET",
         dataType: "JSON",
         success: function(data){
@@ -210,7 +281,7 @@ function editUserProfileInfo(usrProfileID){
 
 function editUserExperience(usrExpID){
     $.ajax({
-        url : "<?php echo site_url('index.php/form_validation/GetCompanyInfo/')?>" + usrExpID,
+        url : "/index.php/form_validation/GetCompanyInfo/" + usrExpID,
         type: "GET",
         dataType: "JSON",
         success: function(data){
@@ -239,7 +310,7 @@ function editUserExperience(usrExpID){
 
 function editUserEducation(usrEduID){
     $.ajax({
-        url : "<?php echo site_url('index.php/form_validation/GetEducationInfo/')?>" + usrEduID,
+        url : "/index.php/form_validation/GetEducationInfo/" + usrEduID,
         type: "GET",
         dataType: "JSON",
         success: function(data){

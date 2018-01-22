@@ -98,20 +98,29 @@ class Company extends CI_Controller {
     }
 
     public function ValidateandSaveJob(){
+        
         $this->form_validation->set_rules('inputJobRole', 'Job title', 'required');
         $this->form_validation->set_rules('inputJobDescription', 'Job Description', 'required');
         $this->form_validation->set_rules('inputJobType', 'Job type', 'required');
         $this->form_validation->set_rules('inputJobPrimaryRole', 'Role', 'required');
         $this->form_validation->set_rules('inputJobExperience', 'Experience', 'required');
-        $this->form_validation->set_rules('inputJobSkills', 'Skills', 'required');
+        
         $this->form_validation->set_rules('inputJobLocation', 'Work Location', 'required');
         $this->form_validation->set_rules('inputJobMinSal', 'Minimum Salary', 'required');
         $this->form_validation->set_rules('inputJobMaxSal', 'Maximum Salary', 'required');
+        
+        
+        if(empty($_POST['inputJobSkillsList'])){
+            $this->form_validation->set_rules('inputJobSkills', 'Skills', 'required');
+        }
         if ($this->form_validation->run() == FALSE){
             $this->load->view('company/postJob'); //Redirect to signup
         }else{
             if($this->Company_model->PostAJOB()==3){
-                $this->load->view('company/AboutCompany');
+                $this->load->library('session');
+                $this->company_id = $this->session->userdata('compID');
+                $companyProfile = $this->Company_model->GetCompanyInfoFromDB($this->company_id);
+                $this->load->view('company/AboutCompany', $companyProfile);                
             }else{
                 $this->load->view('company/GetCompanyInfo');
             }

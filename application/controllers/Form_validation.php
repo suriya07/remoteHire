@@ -132,6 +132,12 @@ class Form_validation extends CI_Controller {
         }
     }
 
+    function GetSkillSetInfo(){
+        $returnData = array();
+        $returnData = $this->User_model->GetSkillSet();       
+        echo json_encode( $returnData);
+    }
+
     /*
     function ValidateandSavePersonalInfo(){
         $this->form_validation->set_rules('inputdateofBirth', 'Date of Birth', 'required');

@@ -83,8 +83,21 @@
         }
 
         public function PostAJOB(){
+            $skillIDArr = explode(',',$this->input->post('inputJobSkillsList'));
+            
             $qryResult = $this->GetSequenceID();
             $this->load->library('session');
+            
+            foreach($skillIDArr as $val){
+                $data = array(
+                    'company_id' => $this->session->userdata('compID'),
+                    'job_id' => $qryResult->JOB_SEQ_ID,
+                    'job_skill_id' => $val,
+                    'job_skill_name' =>''
+                );
+                $this->db->insert('job_skill_id', $data);
+            }
+            
             $this->company_id = $this->session->userdata('compID');
             $this->job_id = $qryResult->JOB_SEQ_ID;
             $this->job_title = $this->input->post('inputJobRole');
@@ -104,7 +117,7 @@
                 return 1;    
             }else{
                 $qryResult->JOB_SEQ_ID = $qryResult->JOB_SEQ_ID+1;
-                $updateData = array('JOB_SEQ_ID'=>1);
+                $updateData = array('JOB_SEQ_ID'=>$qryResult->JOB_SEQ_ID);
                 $this->db->update('profile_id_generator',$updateData);
                 return ($this->db->affected_rows() != 1)?2:3;
             } 

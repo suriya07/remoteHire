@@ -30,7 +30,7 @@ class App extends CI_Controller {
 		$this->load->view('users/profileAddEdit', $usrProfileData);
 	}
 	public function findJobs(){
-		$email ='suriya227@gmail.com';
+		/*$email ='suriya227@gmail.com';
 		$config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'mail.infoship.in',
@@ -55,8 +55,10 @@ class App extends CI_Controller {
              // echo "successfulllll";
         } else {
             return show_error($this->email->print_debugger());
-        }
-		$this->load->view('users/findjobs');
+		}*/
+		$jobInfo = $this->User_model->GetAllMatchingJobs();
+		
+		$this->load->view('users/findjobs', $jobInfo);
 	}
 
 	public function clearUserSession(){
